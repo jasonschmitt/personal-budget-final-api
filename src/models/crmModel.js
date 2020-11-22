@@ -10,3 +10,5 @@ export const ContactSchema = new Schema({
     type: String,
   },
 });
+
+ContactSchema.set("timestamps", true);
