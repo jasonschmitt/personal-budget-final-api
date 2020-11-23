@@ -7,7 +7,9 @@ const User = mongoose.model("User", UserSchema);
 
 export const loginRequired = (req, res, next) => {
   if (req.user) {
+    console.log("loginRequired next() before");
     next();
+    console.log("loginRequired next() after");
   } else {
     return res.status(401).json({ message: "Unauthorized user" });
   }
@@ -50,6 +52,8 @@ export const login = (req, res) => {
               { email: user.email, firstName: user.firstName, _id: user.id },
               "RESTFULAPIs"
             ),
+            _id: user.id,
+            email: user.email,
           });
         }
       }
