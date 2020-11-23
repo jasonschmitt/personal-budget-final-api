@@ -51,7 +51,7 @@ routes(app);
 testRoutes(app);
 
 app.get("/", (req, res) => {
-  res.send(`hi on port ${PORT}`);
+  console.log(`hi on port ${PORT}`);
 });
 
 app.listen(PORT, () => {
