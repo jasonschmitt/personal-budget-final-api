@@ -25,3 +25,34 @@ export const register = (req, res) => {
     }
   });
 };
+
+export const login = (req, res) => {
+  User.findOne(
+    {
+      email: req.body.email,
+    },
+    (err, user) => {
+      if (err) {
+        throw err;
+      }
+      if (!user) {
+        res
+          .status(401)
+          .json({ message: "authentication failed, no user found" });
+      } else if (user) {
+        if (!user.comparePassword(req.body.password, user.hashPassword)) {
+          res
+            .status(401)
+            .json({ message: "authentication failed, wrong password" });
+        } else {
+          return res.json({
+            token: jwt.sign(
+              { email: user.email, firstName: user.firstName, _id: user.id },
+              "RESTFULAPIs"
+            ),
+          });
+        }
+      }
+    }
+  );
+};
