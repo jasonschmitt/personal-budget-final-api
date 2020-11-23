@@ -6,7 +6,7 @@ export const ContactSchema = new Schema({
   firstName: {
     type: String,
   },
-  lastName: {
+  password: {
     type: String,
   },
 });
