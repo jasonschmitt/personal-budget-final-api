@@ -6,7 +6,12 @@ import {
   deleteContact,
 } from "../controllers/crmController";
 
-import { login, register, loginRequired } from "../controllers/userController";
+import {
+  login,
+  register,
+  loginRequired,
+  getUserWithID,
+} from "../controllers/userController";
 
 const routes = (app) => {
   app
@@ -36,6 +41,11 @@ const routes = (app) => {
 
     // delete a specific contact
     .delete(loginRequired, deleteContact);
+
+  app
+    .route("/user/:userID")
+    // get user with specific id
+    .get(loginRequired, getUserWithID);
 
   // register new user route
   app.route("/auth/register").post(register);

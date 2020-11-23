@@ -6,10 +6,10 @@ import { UserSchema } from "../models/userModel";
 const User = mongoose.model("User", UserSchema);
 
 export const loginRequired = (req, res, next) => {
+  console.log(req);
   if (req.user) {
-    console.log("loginRequired next() before");
+    console.log("we in here login required");
     next();
-    console.log("loginRequired next() after");
   } else {
     return res.status(401).json({ message: "Unauthorized user" });
   }
@@ -53,10 +53,21 @@ export const login = (req, res) => {
               "RESTFULAPIs"
             ),
             _id: user.id,
-            email: user.email,
           });
         }
       }
     }
   );
+};
+
+export const getUserWithID = (req, res) => {
+  console.log(req.params.userID);
+  User.findById(req.params.userID, (err, contact) => {
+    console.log("we are in finding by id");
+    console.log(contact);
+    if (err) {
+      res.send(err);
+    }
+    res.json(contact);
+  });
 };
