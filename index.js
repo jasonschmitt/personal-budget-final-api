@@ -7,10 +7,9 @@ import bodyParser from "body-parser";
 import jsonwebtoken from "jsonwebtoken";
 
 const app = express();
-const PORT = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8081;
-
 // enable cors
 app.use(cors());
+const PORT = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8081;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
