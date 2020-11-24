@@ -7,6 +7,11 @@ import bodyParser from "body-parser";
 import jsonwebtoken from "jsonwebtoken";
 
 const app = express();
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-type,Authorization");
+  next();
+});
 // enable cors
 app.use(cors());
 const PORT = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8081;
