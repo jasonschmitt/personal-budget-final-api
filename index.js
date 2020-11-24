@@ -50,6 +50,9 @@ app.use((req, res, next) => {
 routes(app);
 testRoutes(app);
 
+// serving static files
+app.use(express.static("public"));
+
 app.get("/test", (req, res) => {
   res.send("test route");
 });
