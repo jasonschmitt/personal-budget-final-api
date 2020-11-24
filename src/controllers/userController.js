@@ -62,12 +62,27 @@ export const login = (req, res) => {
 
 export const getUserWithID = (req, res) => {
   console.log(req.params.userID);
-  User.findById(req.params.userID, (err, contact) => {
+  User.findById(req.params.userID, (err, user) => {
     console.log("we are in finding by id");
-    console.log(contact);
+    console.log(user);
     if (err) {
       res.send(err);
     }
-    res.json(contact);
+    res.json(user);
   });
+};
+
+export const updateUserWithID = (req, res) => {
+  const myobj = JSON.parse(Object.keys(req.body)[0]);
+  User.findOneAndUpdate(
+    { _id: req.params.userID },
+    myobj,
+    { new: false, useFindAndModify: true },
+    (err, user) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    }
+  );
 };

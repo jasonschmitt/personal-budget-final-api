@@ -11,6 +11,7 @@ import {
   register,
   loginRequired,
   getUserWithID,
+  updateUserWithID,
 } from "../controllers/userController";
 
 const routes = (app) => {
@@ -45,7 +46,9 @@ const routes = (app) => {
   app
     .route("/user/:userID")
     // get user with specific id
-    .get(loginRequired, getUserWithID);
+    .get(loginRequired, getUserWithID)
+    // update a specific contact
+    .put(loginRequired, updateUserWithID);
 
   // register new user route
   app.route("/auth/register").post(register);
