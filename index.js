@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import jsonwebtoken from "jsonwebtoken";
 
 const app = express();
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 // enable cors
 app.use(cors());
