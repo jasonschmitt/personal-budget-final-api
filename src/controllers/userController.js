@@ -17,7 +17,9 @@ export const loginRequired = (req, res, next) => {
 
 export const register = (req, res) => {
   const newUser = new User(req.body);
+  console.log(newUser);
   newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
+  console.log(newUser);
   newUser.save((err, user) => {
     if (err) {
       return res.status(400).send({ message: err });
