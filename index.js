@@ -50,6 +50,10 @@ app.use((req, res, next) => {
 routes(app);
 testRoutes(app);
 
+app.get("/test", (req, res) => {
+  res.send("test route");
+});
+
 app.get("/", (req, res) => {
   console.log(`hi on port ${PORT}`);
 });
