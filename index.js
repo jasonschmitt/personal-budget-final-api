@@ -56,7 +56,7 @@ testRoutes(app);
 app.use(express.static("public"));
 
 app.get("/test", (req, res) => {
-  res.send("test route");
+  res.send("test route!");
 });
 
 app.get("/", (req, res) => {
