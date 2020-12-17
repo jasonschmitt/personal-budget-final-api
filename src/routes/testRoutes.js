@@ -6,7 +6,7 @@ const routes = (app) => {
       next();
     },
     (req, res, next) => {
-      res.send("WE Connected!");
+      res.send("WE ARE CONNECTED TO THE API!");
     }
   );
 };

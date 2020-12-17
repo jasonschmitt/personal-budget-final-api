@@ -3,14 +3,20 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 export const BudgetSchema = new Schema({
-  label: {
+  user_id: {
     type: String,
   },
-  value: {
-    type: Number,
+  labels: {
+    type: [String],
+    default: [],
   },
-  color: {
-    type: String,
+  values: {
+    type: [Number],
+    default: [],
+  },
+  backgroundColor: {
+    type: [String],
+    default: [],
   },
 });
 

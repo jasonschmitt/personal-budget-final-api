@@ -1,6 +1,7 @@
 import express from "express";
 import routes from "./src/routes/crmRoutes";
 import testRoutes from "./src/routes/testRoutes";
+import budgetRoutes from "./src/routes/budgetRoutes";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 });
 
 routes(app);
+budgetRoutes(app);
 testRoutes(app);
 
 // serving static files
