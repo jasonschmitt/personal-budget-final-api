@@ -15,3 +15,12 @@ export const addNewBudget = (req, res) => {
     res.json(budget);
   });
 };
+
+export const getBudgets = (req, res) => {
+  Budget.find({}, (err, budget) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(budget);
+  });
+};
