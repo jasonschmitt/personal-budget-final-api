@@ -25,7 +25,14 @@ export const register = (req, res) => {
       return res.status(400).send({ message: err });
     } else {
       user.hashPassword = undefined;
-      return res.json(user);
+      // return res.json(user);
+      return res.json({
+        token: jwt.sign(
+          { email: user.email, firstName: user.firstName, _id: user.id },
+          "RESTFULAPIs"
+        ),
+        _id: user.id,
+      });
     }
   });
 };
