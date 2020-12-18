@@ -24,3 +24,14 @@ export const getBudgets = (req, res) => {
     res.json(budget);
   });
 };
+
+export const getBudgetWithID = (req, res) => {
+  console.log("getBudgetWithID we made it");
+  console.log(req.params.user_id);
+  Budget.find({ user_id: req.params.user_id }, (err, contact) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(contact);
+  });
+};
